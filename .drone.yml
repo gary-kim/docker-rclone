@@ -1,0 +1,27 @@
+kind: pipeline
+name: build-and-deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build-and-deploy-image
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      repo: garykim/rclone
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
+---
+kind: secret
+name: docker_username
+data: A8ASRPjhewpM7u/JoW99/Hn7py2QahTDtgfLSzZSMEV+QTU=
+
+---
+kind: secret
+name: docker_password
+data: r5buBDhofCeUdNVV9cuBczmcAPoeob19wZkmdvtVjxDQIrCFT/o5qSPSnphl6J6T7Q==
