@@ -9,5 +9,7 @@ FROM alpine:3.10
 LABEL maintainer="Gary Kim <gary@garykim.dev>"
 WORKDIR /usr/bin
 COPY --from=downloader /save/rclone .
+COPY docker-entrypoint.sh /
 RUN apk add --no-cache ca-certificates
-
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["version"]
