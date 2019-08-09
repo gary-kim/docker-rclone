@@ -6,17 +6,20 @@ platform:
   arch: amd64
 
 steps:
-  - name: download-rclone
-    image: plugins/download
-    settings: 
-      source: https://github.com/rclone/rclone/releases/download/v1.48.0/rclone-v1.48.0-linux-amd64.zip
-      destination: rclone.zip
-      sha256: 2be0108485a90336dc6f521a39755f639cf64ab9f1b9b95cde7191d905c28f38
-  - name: unzip
-    image: alpine:3.10
+  - name: clone-rclone-repo
+    image: docker:git
     commands:
-      - unzip -q -d . rclone.zip
-      - mv rclone-v1.48.0-linux-amd64/rclone rclone
+      - git clone https://github.com/rclone/rclone rclone-src
+      - cd rclone-src && git checkout v1.48.0
+  - name: build-rclone
+    image: golang:1.12
+    commands: 
+      - cd rclone-src && make
+    environment:
+      GO111MODULE: on
+      GOARCH: amd64
+      GOOS: linux
+      GOPROXY: direct
   - name: build-and-deploy-image
     image: plugins/docker
     settings:
