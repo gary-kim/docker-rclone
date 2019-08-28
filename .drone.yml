@@ -10,11 +10,12 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/rclone/rclone rclone-src
-      - cd rclone-src && git checkout v1.48.0
+      - (cd rclone-src && git checkout v1.48.0)
   - name: build-rclone
     image: golang:1.12
     commands: 
-      - cd rclone-src && make
+      - (cd rclone-src && make)
+      - (cd rclone-src && ../tags.sh) > .tags
     environment:
       GO111MODULE: on
       GOARCH: amd64
