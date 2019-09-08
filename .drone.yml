@@ -10,7 +10,7 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/rclone/rclone rclone-src
-      - (cd rclone-src && git checkout v1.49.1)
+      - (cd rclone-src && git checkout $(cat ../version))
   - name: build-rclone
     image: golang:1.12
     commands: 
