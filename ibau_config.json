@@ -1,0 +1,6 @@
+{
+  "upstreamRepoUrl": "https://github.com/rclone/rclone",
+  "pullRequest": true,
+  "pullRequestNotify": "@gary-kim",
+  "allBranches": true
+}

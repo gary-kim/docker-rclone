@@ -1,4 +1,5 @@
 kind: pipeline
+type: docker
 name: build-and-deploy
 
 platform:
@@ -10,10 +11,10 @@ steps:
     image: docker:git
     commands:
       - git clone https://github.com/rclone/rclone rclone-src
-      - (cd rclone-src && git checkout $(cat ../version))
+      - (cd rclone-src && git checkout $(cat ../VERSION))
   - name: build-rclone
     image: golang:1.13
-    commands: 
+    commands:
       - (cd rclone-src && make)
       - (cd rclone-src && ../tags.sh) > .tags
     environment:
@@ -32,8 +33,3 @@ steps:
     when:
       branch:
         - master
-
----
-kind: secret
-name: docker_password
-data: r5buBDhofCeUdNVV9cuBczmcAPoeob19wZkmdvtVjxDQIrCFT/o5qSPSnphl6J6T7Q==
