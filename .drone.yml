@@ -33,3 +33,18 @@ steps:
     when:
       branch:
         - master
+      event:
+        - push
+      repo:
+        - gary-kim/docker-rclone
+  - name: test-build-image
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      dry_run: true
+    when:
+      branch:
+        - master
+      event:
+        exclude:
+          - push
