@@ -4,3 +4,7 @@
 Resources used to build Docker image avaliable at <https://hub.docker.com/r/garykim/rclone>.
 
 Rclone Source Code: <https://github.com/rclone/rclone>.
+
+#### Changes
+
+**v1.51.0 Onwards:** Add Fuse
