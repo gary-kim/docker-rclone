@@ -41,6 +41,7 @@ steps:
     image: plugins/docker
     settings:
       dockerfile: Dockerfile
+      repo: garykim/rclone
       dry_run: true
     when:
       branch:
