@@ -49,3 +49,10 @@ steps:
       event:
         exclude:
           - push
+
+trigger:
+  branch:
+    - master
+  event:
+    - pull_request
+    - push
