@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.18
 LABEL maintainer="Gary Kim <gary@garykim.dev>"
 COPY rclone-src/rclone /usr/bin
 COPY docker-entrypoint.sh /
