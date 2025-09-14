@@ -13,7 +13,7 @@ steps:
       - git clone https://github.com/rclone/rclone rclone-src
       - (cd rclone-src && git checkout $(cat ../VERSION))
   - name: build-rclone
-    image: golang:1.23
+    image: golang:1.24
     commands:
       - (cd rclone-src && make)
       - (cd rclone-src && ../tags.sh) > .tags
