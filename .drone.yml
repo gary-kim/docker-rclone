@@ -23,7 +23,7 @@ steps:
       GOOS: linux
       GOPROXY: proxy.golang.org, direct
   - name: build-and-deploy-image
-    image: garykim/drone-docker
+    image: plugins/docker
     settings:
       dockerfile: Dockerfile
       repo: garykim/rclone
@@ -38,7 +38,7 @@ steps:
       repo:
         - gary-kim/docker-rclone
   - name: test-build-image
-    image: garykim/drone-docker
+    image: plugins/docker
     settings:
       dockerfile: Dockerfile
       repo: garykim/rclone
